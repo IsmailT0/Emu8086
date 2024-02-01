@@ -1,0 +1,19 @@
+< THE SYMBOL TABLE >  isPalindrome.com  --  emu8086 assembler version: 4.07 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+START                    	00100     	-1        	LABEL     	(NOSEG)   
+NEXT                     	0010F     	-1        	LABEL     	(NOSEG)   
+LINEEND                  	0011A     	-1        	LABEL     	(NOSEG)   
+CAL_PAL                  	0011E     	-1        	LABEL     	(NOSEG)   
+PAL                      	0012A     	-1        	LABEL     	(NOSEG)   
+NOTPAL                   	00133     	-1        	LABEL     	(NOSEG)   
+END                      	0013A     	-1        	LABEL     	(NOSEG)   
+MES                      	0013B     	1         	VAR       	(NOSEG)   
+MES2                     	0014E     	1         	VAR       	(NOSEG)   
+MES3                     	0015F     	1         	VAR       	(NOSEG)   
+PALINDROME               	0016F     	1         	VAR       	(NOSEG)   
+===================================================================================================
+[ 26.12.2023  --  10:23:00 ] 
+< END >
+ 

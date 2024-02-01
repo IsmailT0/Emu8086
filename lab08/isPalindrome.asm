@@ -1,0 +1,59 @@
+
+; You may customize this and other start-up templates; 
+; The location of this template is c:\emu8086\inc\0_com_template.txt
+
+org 100h
+
+start: 
+
+lea dx,mes
+mov ah,09h
+int 21h
+
+lea si,palindrome
+lea di,palindrome
+mov ah,01h
+
+next:
+
+int 21h
+cmp al,0dh
+je lineend
+mov [di],al
+inc di
+jmp next
+
+lineend:
+    mov al,'$'
+    mov [di],al
+
+cal_pal:
+dec di
+mov al,[si]
+cmp  al,[di]
+jne notpal
+inc si
+cmp si,di
+je pal
+
+pal:
+lea dx,mes3
+mov ah,09h
+int 21h
+jmp end
+
+notpal:
+lea dx,mes2
+mov ah,09h
+int 21h
+
+
+end:
+ret
+
+mes db 10, 'Enter the string:$'
+mes2 db 13,10, 'Not plaindrome$'
+mes3 db 13,10, 'is plaindrome$'
+palindrome  db 50 dup(0)
+
+

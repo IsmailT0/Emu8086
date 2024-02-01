@@ -1,0 +1,89 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+reversestring.com -- emu8086 assembler version: 4.07  
+ 
+[ 2.01.2024  --  11:04:36 ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       
+[   2]        :                                       ; You may customize this and other start-up templates;
+[   3]        :                                       ; The location of this template is c:\emu8086\inc\0_com_template.txt
+[   4]        :                                       
+[   5]        :                                       org 100h
+[   6]        :                                       
+[   7]        :                                       ; add your code here
+[   8]        :                                       
+[   9]    0100: BA 49 01                              lea dx,mes
+[  10]    0103: B4 09                                 mov ah,09h
+[  11]    0105: CD 21                                 int 21h
+[  12]        :                                       
+[  13]    0107: BE 64 01                              lea si,newword
+[  14]    010A: BF 64 01                              lea di,newword
+[  15]    010D: B4 01                                 mov ah,01h
+[  16]        :                                       
+[  17]    010F:                                       next:
+[  18]    010F: CD 21                                 int 21h
+[  19]    0111: 3C 0D                                 cmp al,0dh
+[  20]    0113: 74 05                                 je lineend
+[  21]    0115: 88 05                                 mov [di],al
+[  22]    0117: 47                                    inc di
+[  23]    0118: EB F5                                 jmp next
+[  24]        :                                       
+[  25]    011A:                                       lineend:
+[  26]    011A: B0 24                                 mov al,'$'
+[  27]    011C: 88 05                                 mov [di],al
+[  28]        :                                       
+[  29]    011E: 8B DE                                 mov bx,si
+[  30]    0120:                                       pushtostack:
+[  31]    0120: 3B F7                                 cmp si,di
+[  32]    0122: 74 05                                 je popfromstack
+[  33]    0124: FF 34                                 push [si]
+[  34]    0126: 46                                    inc si
+[  35]    0127: E2 F7                                 loop pushtostack
+[  36]        :                                       
+[  37]        :                                       
+[  38]    0129:                                       popfromstack:
+[  39]    0129: 3B FB                                 cmp di,bx
+[  40]    012B: 74 06                                 je end
+[  41]    012D: 58                                    pop ax
+[  42]    012E: 89 07                                 mov [bx],ax
+[  43]    0130: 43                                    inc bx
+[  44]    0131: E2 F6                                 loop popfromstack
+[  45]        :                                       
+[  46]        :                                       
+[  47]    0133:                                       end:
+[  48]    0133: 43                                    inc bx
+[  49]    0134: C6 07 24                              mov [bx],'$'
+[  50]    0137: B6 02                                 mov dh,2
+[  51]    0139: B2 00                                 mov dl,0
+[  52]    013B: B7 00                                 mov bh,0
+[  53]    013D: B4 02                                 mov ah,2
+[  54]    013F: CD 10                                 int 10h
+[  55]    0141: BA 64 01                              lea dx,newword
+[  56]    0144: B4 09                                 mov ah,09h
+[  57]    0146: CD 21                                 int 21h
+[  58]    0148: C3                                    ret
+[  59]        :                                       
+[  60]        :                                       
+[  61]        :                                       
+[  62]        :                                       
+[  63]    0149: 0A 68 65 72 68 61 6E 67 69 20 62 69   mes db 10, 'herhangi bir kelime girin$'
+                72 20 6B 65 6C 69 6D 65 20 67 69 72 
+                69 6E 24                            
+[  64]    0164: 00 00 00 00 00 00 00 00 00 00 00 00   newword db 50 dup(0)
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00                               
+[  65]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================
